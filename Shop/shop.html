@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saibaba Xerox</title>
+  <link rel="stylesheet" href="shopstyles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>SAIBABA XEROX</h1>
+    <h4>Advanced Property Calculator</h4>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="landPriceInput">Land Price (per sq. meter)</label>
+        <input type="number" id="landPriceInput" placeholder="e.g., 52000">
+      </div>
+      <div class="form-group">
+        <label for="constructionYearInput">Year of Construction</label>
+        <input type="number" id="constructionYearInput" placeholder="e.g., 2020">
+      </div>
+    </div>
+
+    <table id="calculationTable">
+      <thead>
+        <tr>
+          <th>Floor</th>
+          <th>Land Area (Input)</th>
+          <th>Land Price</th>
+          <th>Value</th>
+          <th>Depreciation</th>
+          <th>Construction Value</th>
+          <th>Stamp Duty</th>
+          <th>Registration Fees</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ground Floor</td>
+          <td><input type="number" class="landAreaInput" id="gf_landArea" placeholder="sq. meters"></td>
+          <td><input type="text" id="gf_landPrice" disabled></td>
+          <td><input type="text" id="gf_value" disabled></td>
+          <td><input type="text" id="gf_depreciation" disabled></td>
+          <td><input type="text" id="gf_constructionValue" disabled></td>
+          <td><input type="text" id="gf_stampDuty" disabled></td>
+          <td><input type="text" id="gf_regFees" disabled></td>
+        </tr>
+        <tr>
+          <td>First Floor</td>
+          <td><input type="number" class="landAreaInput" id="ff_landArea" placeholder="sq. meters"></td>
+          <td><input type="text" id="ff_landPrice" disabled></td>
+          <td><input type="text" id="ff_value" disabled></td>
+          <td><input type="text" id="ff_depreciation" disabled></td>
+          <td><input type="text" id="ff_constructionValue" disabled></td>
+          <td><input type="text" id="ff_stampDuty" disabled></td>
+          <td><input type="text" id="ff_regFees" disabled></td>
+        </tr>
+        <tr>
+          <td>Second Floor</td>
+          <td><input type="number" class="landAreaInput" id="sf_landArea" placeholder="sq. meters"></td>
+          <td><input type="text" id="sf_landPrice" disabled></td>
+          <td><input type="text" id="sf_value" disabled></td>
+          <td><input type="text" id="sf_depreciation" disabled></td>
+          <td><input type="text" id="sf_constructionValue" disabled></td>
+          <td><input type="text" id="sf_stampDuty" disabled></td>
+          <td><input type="text" id="sf_regFees" disabled></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="final-summary">
+        <div class="form-group">
+            <label for="ladiesTotal">Ladies Total</label>
+            <input type="text" id="ladiesTotal" class="final-total-input" disabled>
+        </div>
+        <div class="form-group">
+            <label for="gentsTotal">Gents Total</label>
+            <input type="text" id="gentsTotal" class="final-total-input" disabled>
+        </div>
+        <div class="clear-button-container">
+            <button onclick="clearFields()">Clear All</button>
+        </div>
+    </div>
+  </div>
+
+  <script src="Shopscript.js"></script>
+</body>
+</html>

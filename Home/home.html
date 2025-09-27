@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saibaba Xerox</title>
+  <link rel="stylesheet" href="HomeStyle.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>SAIBABA XEROX</h1>
+    <h4>Advanced Property Calculator</h4>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="typeOfArea">Type of Area</label>
+        <select id="typeOfArea">
+          <option value="urban">Urban</option>
+          <option value="rural">Rural</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="typeOfConstruction">Type of Construction</label>
+        <select id="typeOfConstruction">
+          <option value="rcc_frame_structure">RCC Frame Structure</option>
+          <option value="load_bearing_structure">Load Bearing Structure</option>
+          <option value="semi_pucca_struct">Semi Pucca Structure</option>
+          <option value="industrial_rcc_shade">Industrial RCC Shade</option>
+          <option value="industrial_steel_shade">Industrial Steel Shade</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="jantriRate">Jantri Rate</label>
+        <input type="number" id="jantriRate" placeholder="Enter Jantri rate per sq. meter">
+      </div>
+      <div class="form-group">
+        <label for="rateOfConstruction">Rate of Construction (per sq. meter)</label>
+        <input type="text" id="rateOfConstruction" disabled>
+      </div>
+      <div class="form-group">
+        <label for="landArea">Land Area (sq. meters)</label>
+        <input type="number" id="landArea" placeholder="Enter total land area">
+      </div>
+      <div class="form-group">
+        <label for="valueOfLand">Value of Land</label>
+        <input type="text" id="valueOfLand" disabled>
+      </div>
+    </div> <div class="table-container">
+      <table id="constructionTable">
+        <thead>
+          <tr>
+            <th>Floor</th>
+            <th>Construction Area</th>
+            <th>Construction Year</th>
+            <th>Value</th>
+            <th>Depreciation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ground Floor</td>
+            <td><input type="number" class="contArea"></td>
+            <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
+            <td><input type="text" class="value" disabled></td>
+            <td><input type="text" class="depreciation" disabled></td>
+          </tr>
+          <tr>
+            <td>First Floor</td>
+            <td><input type="number" class="contArea"></td>
+            <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
+            <td><input type="text" class="value" disabled></td>
+            <td><input type="text" class="depreciation" disabled></td>
+          </tr>
+          <tr>
+            <td>Second Floor</td>
+            <td><input type="number" class="contArea"></td>
+            <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
+            <td><input type="text" class="value" disabled></td>
+            <td><input type="text" class="depreciation" disabled></td>
+          </tr>
+          <tr>
+            <td>Third Floor</td>
+            <td><input type="number" class="contArea"></td>
+            <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
+            <td><input type="text" class="value" disabled></td>
+            <td><input type="text" class="depreciation" disabled></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total</td>
+            <td><input type="text" id="totalConstructionValue" disabled></td>
+            <td><input type="text" id="totalDepreciation" disabled></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="total-valuation">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="constructionValue">Construction Value</label>
+          <input type="text" id="constructionValue" disabled>
+        </div>
+        <div class="form-group">
+          <label for="marketValue">Market Value</label>
+          <input type="text" id="marketValue" disabled>
+        </div>
+        <div class="form-group">
+          <label for="stampDuty">Stamp Duty (4.9%)</label>
+          <input type="text" id="stampDuty" disabled>
+        </div>
+        <div class="form-group">
+            <label for="regFee">Registration Fee (1%)</label>
+            <input type="text" id="regFee" disabled>
+        </div>
+        <div class="form-group final-cost">
+            <label for="ladiesTotal">Ladies Total Cost</label>
+            <input type="text" id="ladiesTotal" disabled>
+        </div>
+        <div class="form-group final-cost">
+            <label for="gentsTotal">Gents Total Cost</label>
+            <input type="text" id="gentsTotal" disabled>
+        </div>
+        <div class="clear-button-container">
+            <button onclick="clearFields()">Clear All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="HomeApp.js"></script>
+</body>
+</html>
