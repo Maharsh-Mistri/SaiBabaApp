@@ -39,8 +39,9 @@ function calculateAll() {
   const valueOfLand = jantriRate * landArea;
   document.getElementById("valueOfLand").value = formatCurrency(valueOfLand);
 
-  let totalConstructionValue = 0;
+  let totalValue = 0;
   let totalDepreciation = 0;
+  let totalConstructionValue = 0; // This will be the total after depreciation
   const currentYear = new Date().getFullYear();
   const rows = document.querySelectorAll("#constructionTable tbody tr");
 
@@ -56,34 +57,50 @@ function calculateAll() {
             depreciationRate = 0.7; 
         }
         const depreciation = value * depreciationRate;
+        const constructionValue = value - depreciation; // Floor-wise value after depreciation
 
+        // Update the row with all calculated values
         row.querySelector(".value").value = formatCurrency(value);
         row.querySelector(".depreciation").value = formatCurrency(depreciation);
+        row.querySelector(".constructionValue").value = formatCurrency(constructionValue);
 
-        totalConstructionValue += value;
+        // Add to totals
+        totalValue += value;
         totalDepreciation += depreciation;
+        totalConstructionValue += constructionValue;
     } else {
+        // Clear row if no construction area is entered
         row.querySelector(".value").value = "";
         row.querySelector(".depreciation").value = "";
+        row.querySelector(".constructionValue").value = "";
     }
   });
 
-  const depreciatedConstructionValue = totalConstructionValue - totalDepreciation;
-  const marketValue = depreciatedConstructionValue + valueOfLand;
-
+  const marketValue = totalConstructionValue + valueOfLand;
   const stampDutyRaw = marketValue * 0.049;
-  const regFeeRaw = marketValue * 0.01;
-
   const roundedStampDuty = roundupToNearest100(stampDutyRaw);
-  const roundedRegFee = roundupToNearest100(regFeeRaw + 600);
 
-  const ladiesTotal = roundedStampDuty + 600 + 5000;
-  const gentsTotal = roundedStampDuty + roundedRegFee + 5000;
+  // --- Registration Fee and Totals Logic ---
+  let roundedRegFee = 0;
+  let ladiesTotal = 0;
+  let gentsTotal = 0;
+
+  // Only calculate fees and totals if a valid market value exists
+  if (marketValue > 0) {
+    const regFeeRaw = marketValue * 0.01;
+    roundedRegFee = roundupToNearest100(regFeeRaw + 600);
+    
+    ladiesTotal = roundedStampDuty + 600 + 5000;
+    gentsTotal = roundedStampDuty + roundedRegFee + 5000;
+  }
 
   // --- Update UI ---
-  document.getElementById("totalConstructionValue").value = formatCurrency(totalConstructionValue);
+  // Update table footer totals
+  document.getElementById("totalValue").value = formatCurrency(totalValue);
   document.getElementById("totalDepreciation").value = formatCurrency(totalDepreciation);
-  document.getElementById("constructionValue").value = formatCurrency(depreciatedConstructionValue); // <-- THIS LINE IS NEW
+  document.getElementById("totalConstructionValue").value = formatCurrency(totalConstructionValue);
+  
+  // Update summary section
   document.getElementById("marketValue").value = formatCurrency(marketValue);
   document.getElementById("stampDuty").value = formatCurrency(roundedStampDuty);
   document.getElementById("regFee").value = formatCurrency(roundedRegFee);
