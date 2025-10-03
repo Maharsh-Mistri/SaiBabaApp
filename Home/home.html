@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saibaba Xerox</title>
-  <link rel="stylesheet" href="HomeStyle.css">
+  <link rel="stylesheet" href="./HomeStyle.css">
 </head>
 <body>
 
@@ -46,7 +46,9 @@
         <label for="valueOfLand">Value of Land</label>
         <input type="text" id="valueOfLand" disabled>
       </div>
-    </div> <div class="table-container">
+    </div> 
+    
+    <div class="table-container">
       <table id="constructionTable">
         <thead>
           <tr>
@@ -55,6 +57,7 @@
             <th>Construction Year</th>
             <th>Value</th>
             <th>Depreciation</th>
+            <th>Construction Value</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +67,7 @@
             <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
             <td><input type="text" class="value" disabled></td>
             <td><input type="text" class="depreciation" disabled></td>
+            <td><input type="text" class="constructionValue" disabled></td>
           </tr>
           <tr>
             <td>First Floor</td>
@@ -71,6 +75,7 @@
             <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
             <td><input type="text" class="value" disabled></td>
             <td><input type="text" class="depreciation" disabled></td>
+            <td><input type="text" class="constructionValue" disabled></td>
           </tr>
           <tr>
             <td>Second Floor</td>
@@ -78,6 +83,7 @@
             <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
             <td><input type="text" class="value" disabled></td>
             <td><input type="text" class="depreciation" disabled></td>
+            <td><input type="text" class="constructionValue" disabled></td>
           </tr>
           <tr>
             <td>Third Floor</td>
@@ -85,24 +91,22 @@
             <td><input type="number" class="constYear" placeholder="e.g., 2024"></td>
             <td><input type="text" class="value" disabled></td>
             <td><input type="text" class="depreciation" disabled></td>
+            <td><input type="text" class="constructionValue" disabled></td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td colspan="3">Total</td>
-            <td><input type="text" id="totalConstructionValue" disabled></td>
+            <td><input type="text" id="totalValue" disabled></td>
             <td><input type="text" id="totalDepreciation" disabled></td>
+            <td><input type="text" id="totalConstructionValue" disabled></td>
           </tr>
         </tfoot>
       </table>
     </div>
 
     <div class="total-valuation">
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="constructionValue">Construction Value</label>
-          <input type="text" id="constructionValue" disabled>
-        </div>
+      <div class="summary-grid">
         <div class="form-group">
           <label for="marketValue">Market Value</label>
           <input type="text" id="marketValue" disabled>
@@ -130,6 +134,6 @@
     </div>
   </div>
 
-  <script src="HomeApp.js"></script>
+  <script src="./HomeApp.js"></script>
 </body>
 </html>
