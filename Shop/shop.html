@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saibaba Xerox</title>
-  <link rel="stylesheet" href="shopstyles.css">
+  <link rel="stylesheet" href="./shopstyles.css">
 </head>
 <body>
 
@@ -12,22 +12,21 @@
     <h1>SAIBABA XEROX</h1>
     <h4>Advanced Property Calculator</h4>
 
-    <div class="form-grid">
+    <!-- Main Input Section - Year input removed -->
+    <div class="form-grid-single">
       <div class="form-group">
         <label for="landPriceInput">Land Price (per sq. meter)</label>
         <input type="number" id="landPriceInput" placeholder="e.g., 52000">
       </div>
-      <div class="form-group">
-        <label for="constructionYearInput">Year of Construction</label>
-        <input type="number" id="constructionYearInput" placeholder="e.g., 2020">
-      </div>
     </div>
 
+    <!-- Calculation Table - Year column added -->
     <table id="calculationTable">
       <thead>
         <tr>
           <th>Floor</th>
           <th>Land Area (Input)</th>
+          <th>Construction Year</th>
           <th>Land Price</th>
           <th>Value</th>
           <th>Depreciation</th>
@@ -37,9 +36,11 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Ground Floor Row -->
         <tr>
           <td>Ground Floor</td>
           <td><input type="number" class="landAreaInput" id="gf_landArea" placeholder="sq. meters"></td>
+          <td><input type="number" class="constructionYearInput" id="gf_constructionYear" placeholder="e.g., 2020"></td>
           <td><input type="text" id="gf_landPrice" disabled></td>
           <td><input type="text" id="gf_value" disabled></td>
           <td><input type="text" id="gf_depreciation" disabled></td>
@@ -47,9 +48,11 @@
           <td><input type="text" id="gf_stampDuty" disabled></td>
           <td><input type="text" id="gf_regFees" disabled></td>
         </tr>
+        <!-- First Floor Row -->
         <tr>
           <td>First Floor</td>
           <td><input type="number" class="landAreaInput" id="ff_landArea" placeholder="sq. meters"></td>
+          <td><input type="number" class="constructionYearInput" id="ff_constructionYear" placeholder="e.g., 2020"></td>
           <td><input type="text" id="ff_landPrice" disabled></td>
           <td><input type="text" id="ff_value" disabled></td>
           <td><input type="text" id="ff_depreciation" disabled></td>
@@ -57,9 +60,11 @@
           <td><input type="text" id="ff_stampDuty" disabled></td>
           <td><input type="text" id="ff_regFees" disabled></td>
         </tr>
+        <!-- Second Floor Row -->
         <tr>
           <td>Second Floor</td>
           <td><input type="number" class="landAreaInput" id="sf_landArea" placeholder="sq. meters"></td>
+          <td><input type="number" class="constructionYearInput" id="sf_constructionYear" placeholder="e.g., 2020"></td>
           <td><input type="text" id="sf_landPrice" disabled></td>
           <td><input type="text" id="sf_value" disabled></td>
           <td><input type="text" id="sf_depreciation" disabled></td>
@@ -85,6 +90,6 @@
     </div>
   </div>
 
-  <script src="Shopscript.js"></script>
+  <script src="./shopscript.js"></script>
 </body>
 </html>
