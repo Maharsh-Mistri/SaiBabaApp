@@ -19,7 +19,6 @@ function roundupToNearest100(num) {
 function calculateAll() {
   // 1. Get base inputs
   const baseLandPrice = parseFloat(document.getElementById("landPriceInput").value) || 0;
-  const constructionYear = parseInt(document.getElementById("constructionYearInput").value) || new Date().getFullYear();
   const currentYear = new Date().getFullYear();
 
   // 2. Define floor-specific data
@@ -35,8 +34,9 @@ function calculateAll() {
 
   // 4. Loop through each floor to calculate and update UI
   floors.forEach(floor => {
-    // Get this floor's specific land area input
+    // Get this floor's specific inputs
     const landArea = parseFloat(document.getElementById(`${floor.id}_landArea`).value) || 0;
+    const constructionYear = parseInt(document.getElementById(`${floor.id}_constructionYear`).value) || currentYear;
     
     const floorLandPrice = baseLandPrice * floor.multiplier;
     const floorValue = floorLandPrice * landArea;
@@ -51,7 +51,6 @@ function calculateAll() {
     // --- Registration Fee Calculation (Conditional) ---
     let floorRegFees = 0; // Default to 0
 
-    // **Only calculate the fee if the user has entered the required info**
     if (landArea > 0 && baseLandPrice > 0) {
       const rawRegFees = (floorConstructionValue * 0.01) + 600;
       floorRegFees = roundupToNearest100(rawRegFees);
@@ -63,7 +62,7 @@ function calculateAll() {
     document.getElementById(`${floor.id}_depreciation`).value = formatCurrency(floorDepreciation);
     document.getElementById(`${floor.id}_constructionValue`).value = formatCurrency(floorConstructionValue);
     document.getElementById(`${floor.id}_stampDuty`).value = formatCurrency(floorStampDuty);
-    document.getElementById(`${floor.id}_regFees`).value = formatCurrency(floorRegFees); // <-- Displays 0 or the full calculated fee
+    document.getElementById(`${floor.id}_regFees`).value = formatCurrency(floorRegFees);
 
     // Add this floor's final values to the totals
     totalStampDuty += floorStampDuty;
@@ -71,8 +70,13 @@ function calculateAll() {
   });
 
   // 5. Calculate final Ladies and Gents totals
-  const ladiesTotal = totalStampDuty + 600 + 5000;
-  const gentsTotal = totalStampDuty + totalRegFees + 5000;
+  let ladiesTotal = 0;
+  let gentsTotal = 0;
+
+  if (totalStampDuty > 0 || totalRegFees > 0) {
+    ladiesTotal = totalStampDuty + 600 + 5000;
+    gentsTotal = totalStampDuty + totalRegFees + 5000;
+  }
 
   // 6. Update the final summary outputs
   document.getElementById("ladiesTotal").value = formatCurrency(ladiesTotal);
@@ -81,9 +85,9 @@ function calculateAll() {
 
 // --- EVENT LISTENERS AND INITIALIZATION ---
 function setupEventListeners() {
-  // Listen to global inputs and all per-floor area inputs
+  // Listen to global inputs and all per-floor area and year inputs
   const triggerElements = document.querySelectorAll(
-    '#landPriceInput, #constructionYearInput, .landAreaInput'
+    '#landPriceInput, .landAreaInput, .constructionYearInput'
   );
   triggerElements.forEach(element => {
     element.addEventListener('input', calculateAll);
@@ -96,5 +100,5 @@ function clearFields() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
-  calculateAll(); // Run once on page load to initialize all fields
+  calculateAll();
 });
