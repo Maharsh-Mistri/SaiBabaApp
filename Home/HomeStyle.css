@@ -111,6 +111,14 @@ tfoot input {
   padding-top: 10px;
 }
 
+/* --- New 3-Column Grid for the Summary Section --- */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px 20px;
+  align-items: end; /* Aligns items like the button to the bottom */
+}
+
 /* --- Final Costs and Button --- */
 .final-cost label {
   color: #28a745;
@@ -124,8 +132,6 @@ tfoot input {
 }
 
 .clear-button-container {
-  grid-column: 2; /* Place button in the second column */
-  align-self: end; /* Align the container to the bottom of the grid cell */
   text-align: right;
 }
 
